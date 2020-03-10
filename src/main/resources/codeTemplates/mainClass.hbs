@@ -1,13 +1,30 @@
-package asbestos.fabricreator.{{modProps.packageName}};
+package asbestos.fabricreator.{{mod.packageName}};
 
+{{#if registry.hasSpecialBlocks }}
+import asbestos.fabricreator.{{mod.packageName}}.block.*;
+{{/if}}
+{{#if registry.hasSpecialItems }}
+import asbestos.fabricreator.{{mod.packageName}}.item.*;
+{{/if}}
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class {{modProps.className}} implements ModInitializer {
+public class {{mod.className}} implements ModInitializer {
     @Override
     public void onInitialize() {
-        {{#each registries }}
-        Registry.register({{type}}, new Identifier("{{../modProps.modId}}", "{{id}}"), {{object}});
+        {{#each registry.blocks }}
+        Registry.register(Registry.BLOCK, new Identifier("{{../mod.id}}", "{{id}}"), {{object}});
+        {{/each}}
+
+        {{#each registry.blockItems }}
+        Registry.register(Registry.ITEM, new Identifier("{{../mod.id}}", "{{id}}"), {{object}});
+        {{/each}}
+
+        {{#each registry.items }}
+        Registry.register(Registry.ITEM, new Identifier("{{../mod.id}}", "{{id}}"), {{object}});
         {{/each}}
     }
 }

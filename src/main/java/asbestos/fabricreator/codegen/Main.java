@@ -3,7 +3,6 @@ package asbestos.fabricreator.codegen;
 import asbestos.fabricreator.codegen.context.MainClassContext;
 import asbestos.fabricreator.codegen.context.model.ModProps;
 import asbestos.fabricreator.codegen.context.model.RegistryBlock;
-import com.github.jknack.handlebars.Context;
 import com.github.jknack.handlebars.Handlebars;
 import com.github.jknack.handlebars.Template;
 import com.github.jknack.handlebars.io.ClassPathTemplateLoader;
@@ -27,10 +26,12 @@ public class Main {
             .setClassName("MyMod")
             .setPackageName("mymod");
         RegistryBlock registryBlock = new RegistryBlock()
+            .setType(RegistryBlock.RegistryType.ITEM)
             .setId("itemie");
         MainClassContext mainClassContext = new MainClassContext()
             .setModProps(modProps)
             .setRegistries(Arrays.asList(registryBlock));
+
         System.out.println(template.apply(mainClassContext));
     }
 }

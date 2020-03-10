@@ -1,0 +1,10 @@
+package asbestos.fabricreator.{{mod.packageName}}.block;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
+
+public class {{block.className}} extends Block {
+    public {{block.className}}() {
+        super(Settings.copyOf(Blocks.{{block.settingsSource}}){{ TODO SPECIAL STUFF }});
+    }
+}
