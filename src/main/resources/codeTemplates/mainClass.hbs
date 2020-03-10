@@ -1,10 +1,13 @@
-package asbestos.fabricreator.{{ modProps.packageName }};
+package asbestos.fabricreator.{{modProps.packageName}};
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 
-public class {{ modProps.className }} implements ModInitializer {
+public class {{modProps.className}} implements ModInitializer {
     @Override
     public void onInitialize() {
-        {{ code.registries }}
+        {{#each registries }}
+        Registry.register({{type}}, new Identifier("{{../modProps.modId}}", "{{id}}"), {{object}});
+        {{/each}}
     }
 }
