@@ -1,0 +1,10 @@
+package asbestos.fabricreator.{{ modProps.packageName }};
+
+import net.fabricmc.api.ModInitializer;
+
+public class {{ modProps.className }} implements ModInitializer {
+    @Override
+    public void onInitialize() {
+        {{ code.registries }}
+    }
+}
